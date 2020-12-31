@@ -6,8 +6,9 @@ import './App.css';
 
 function App() {
   return (
-    <div data-test="component-app">
-      <Congrats success={false} />
+    <div data-test="component-app" className="container">
+      <h1>Jotto The Game</h1>
+      <Congrats success={true} />
       <GuessedWords
         guessedWords={[
           { guessedWord: 'train', letterMatchCount: 3 },
