@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Congrats, GuessedWords } from './components';
+import { Congrats, GuessedWords, Input } from './components';
 
 import './App.css';
 
@@ -9,6 +9,7 @@ function App() {
     <div data-test="component-app" className="container">
       <h1>Jotto The Game</h1>
       <Congrats success={true} />
+      <Input />
       <GuessedWords
         guessedWords={[
           { guessedWord: 'train', letterMatchCount: 3 },
