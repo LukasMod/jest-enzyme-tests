@@ -18,12 +18,12 @@ const setup = (props = {}) => {
 };
 
 it('should render without fail', () => {
-  const wrapper = setup({ success: false });
+  const wrapper = setup();
   const component = findByTestAttr(wrapper, 'component-congrats');
   expect(component.length).toBe(1);
 });
-it('should render no text when when prop `success` is false', () => {
-  const wrapper = setup({ success: false });
+it('should render no text when prop `success` is false', () => {
+  const wrapper = setup();
   const component = findByTestAttr(wrapper, 'component-congrats');
   expect(component.text()).toBe('');
 });
@@ -33,7 +33,5 @@ it('should render `success` when prop `success` is true', () => {
   expect(message.text().length).not.toBe(0);
 });
 it('should not throw warning with expected props', () => {
-  const expectedProps = { success: false };
-  const propError = checkProps(Congrats, expectedProps);
-  expect(propError).toBeUndefined();
+  checkProps(Congrats, { success: false });
 });
