@@ -7,7 +7,7 @@ import { actionTypes } from '../actions/';
  * @returns {boolean} - New state (secret word payload from action).
  */
 
-export default (state = null, action) => {
+const secretWordReducer = (state = null, action) => {
   switch (action.type) {
     case actionTypes.SET_SECRET_WORD:
       return action.payload;
@@ -15,3 +15,5 @@ export default (state = null, action) => {
       return state;
   }
 };
+
+export default secretWordReducer;
