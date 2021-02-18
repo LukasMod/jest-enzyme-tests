@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import { findByTestAttr, storeFactory } from '../../../test/testUtils';
 
-import Input from './Input';
+import Input, { UnconnectedInput } from './Input';
 import { guessWord } from '../../actions';
 
 /**
@@ -74,5 +74,30 @@ describe('redux props', () => {
     const wrapper = setup();
     const guessWordProp = wrapper.instance().props.guessWord;
     expect(guessWordProp).toBeInstanceOf(Function);
+  });
+});
+
+describe('guessWord action creator', () => {
+  let guessWordMock;
+  let wrapper;
+  const guessedWord = 'train';
+  beforeEach(() => {
+    guessWordMock = jest.fn();
+    const props = {
+      guessWord: guessWordMock,
+    };
+    wrapper = shallow(<UnconnectedInput {...props} />);
+    wrapper.setState({ currentGuess: guessedWord });
+
+    const submitBox = findByTestAttr(wrapper, 'submit-button');
+    submitBox.simulate('click', { preventDefault() {} });
+  });
+  it('"guessWord" was called once', () => {
+    const guessWordCallCount = guessWordMock.mock.calls.length;
+    expect(guessWordCallCount).toBe(1);
+  });
+  it('"guessWord" with right input value as argument', () => {
+    const guessWordArg = guessWordMock.mock.calls[0][0];
+    expect(guessWordArg).toBe(guessedWord);
   });
 });
