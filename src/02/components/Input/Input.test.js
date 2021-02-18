@@ -100,4 +100,8 @@ describe('guessWord action creator', () => {
     const guessWordArg = guessWordMock.mock.calls[0][0];
     expect(guessWordArg).toBe(guessedWord);
   });
+  it('input box clears on submit', () => {
+    const currentInputValue = wrapper.state('currentGuess');
+    expect(currentInputValue).toBe('');
+  });
 });
