@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Congrats, GuessedWords, Input } from './components';
+import { Congrats, GuessedWords, Input, Tips } from './components';
 import { getSecretWord } from './actions';
 
 import './App.css';
@@ -20,7 +20,7 @@ export class UnconnectedApp extends Component {
     return (
       <div data-test="component-app" className="container">
         <h1>Jotto The Game</h1>
-        <div>Secret word is: {this.props.secretWord}</div>
+        <Tips secretWord={this.props.secretWord} />
         <Congrats success={this.props.success} />
         <Input />
         <GuessedWords guessedWords={this.props.guessedWords} />
