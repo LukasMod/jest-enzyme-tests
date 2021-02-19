@@ -28,7 +28,6 @@ const GuessedWords = (props) => {
           </thead>
           <tbody>{guessedWordsRows}</tbody>
         </table>
-        <div>Total Guesses: {props.guessedWords.length}</div>
       </div>
     );
   }
