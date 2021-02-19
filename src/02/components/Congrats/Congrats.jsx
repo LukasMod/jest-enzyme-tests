@@ -27,5 +27,3 @@ Congrats.propTypes = {
 };
 
 export default Congrats;
-
-//<div data-test="component-congrats">Success</div>

@@ -18,6 +18,8 @@ export const guessWord = (guessedWord) => {
   return function (dispatch, getState) {
     const secretWord = getState().secretWord;
     const letterMatchCount = getLetterMatchCount(guessedWord, secretWord);
+    console.log('action guessedWord ' + guessedWord);
+    console.log('action secretWord ' + secretWord);
 
     dispatch({
       type: actionTypes.GUESS_WORD,
@@ -30,22 +32,15 @@ export const guessWord = (guessedWord) => {
   };
 };
 
-// /**
-//  * @functions correctGuess
-//  * @returns {object} - Action object with type 'CORRECT_GUESS'
-//  */
-
-// export function correctGuess() {
-//   return { type: actionTypes.CORRECT_GUESS };
-// }
-
 export const getSecretWord = () => {
   return (dispatch) => {
-    return axios.get('http://localhost:3030').then((response) => {
-      dispatch({
-        type: actionTypes.SET_SECRET_WORD,
-        payload: response.data,
+    return axios
+      .get('https://random-word-api.herokuapp.com/word?number=1')
+      .then((response) => {
+        dispatch({
+          type: actionTypes.SET_SECRET_WORD,
+          payload: response.data[0],
+        });
       });
-    });
   };
 };
