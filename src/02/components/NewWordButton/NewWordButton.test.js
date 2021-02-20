@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import { findByTestAttr, checkProps } from '../../../test/testUtils';
 
-import NewWordButton, { UnconnectedNewWordButton } from './NewWordButton';
+import NewWordButton from './NewWordButton';
 
 describe('word was not guessed', () => {
   it('should not render any text', () => {
@@ -25,7 +25,7 @@ describe('word was guessed', () => {
       success: true,
       resetAction: resetActionMock,
     };
-    wrapper = shallow(<UnconnectedNewWordButton {...props} />);
+    wrapper = shallow(<NewWordButton {...props} />);
   });
 
   it('should render `New Word` button', () => {

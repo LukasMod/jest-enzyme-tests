@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const UnconnectedNewWordButton = (props) => {
+const NewWordButton = (props) => {
   const contents = !props.success ? null : (
     <button
       data-test="component-new-word-button"
@@ -16,9 +16,9 @@ export const UnconnectedNewWordButton = (props) => {
   return <div data-test="component-new-word">{contents}</div>;
 };
 
-UnconnectedNewWordButton.propTypes = {
+NewWordButton.propTypes = {
   success: PropTypes.bool,
   resetAction: PropTypes.func,
 };
 
-export default UnconnectedNewWordButton;
+export default NewWordButton;
