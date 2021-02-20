@@ -5,6 +5,16 @@ export const actionTypes = {
   CORRECT_GUESS: 'CORRECT_GUESS',
   GUESS_WORD: 'GUESS_WORD',
   SET_SECRET_WORD: 'SET_SECRET_WORD',
+  RESET_GAME: 'RESET_GAME',
+};
+
+export const resetGame = () => {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.RESET_GAME,
+    });
+    return dispatch(getSecretWord());
+  };
 };
 
 /**

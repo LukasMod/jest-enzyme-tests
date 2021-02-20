@@ -9,7 +9,7 @@ import {
   TotalGuesses,
   NewWordButton,
 } from './components';
-import { getSecretWord } from './actions';
+import { getSecretWord, resetGame } from './actions';
 
 import './App.css';
 
@@ -29,7 +29,10 @@ export class UnconnectedApp extends Component {
         <h1>Jotto The Game</h1>
         <Tips secretWord={this.props.secretWord} />
         <Congrats success={this.props.success} />
-        <NewWordButton success={this.props.success} />
+        <NewWordButton
+          success={this.props.success}
+          resetAction={this.props.resetGame}
+        />
         <Input />
         <GuessedWords guessedWords={this.props.guessedWords} />
         <TotalGuesses guessCount={this.props.guessedWords.length} />
@@ -41,5 +44,15 @@ export class UnconnectedApp extends Component {
 const mapStateToProps = ({ success, secretWord, guessedWords }) => {
   return { success, secretWord, guessedWords };
 };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getSecretWord: () => {
+      dispatch(getSecretWord());
+    },
+    resetGame: () => {
+      dispatch(resetGame());
+    },
+  };
+};
 
-export default connect(mapStateToProps, { getSecretWord })(UnconnectedApp);
+export default connect(mapStateToProps, mapDispatchToProps)(UnconnectedApp);

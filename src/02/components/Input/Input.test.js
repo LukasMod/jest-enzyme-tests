@@ -4,7 +4,6 @@ import { shallow } from 'enzyme';
 import { findByTestAttr, storeFactory } from '../../../test/testUtils';
 
 import Input, { UnconnectedInput } from './Input';
-import { guessWord } from '../../actions';
 
 /**
  * Factory function to create a ShallowWrapper for the Input component
