@@ -5,8 +5,8 @@ const Tips = (props) => {
   return (
     props.secretWord && (
       <span data-test="guess-tips">
-        {/* Secret word has {props.secretWord.length} letters */}
-        Secret word is: {props.secretWord}
+        Secret word has {props.secretWord.length} letters
+        <p>Dev help: {props.secretWord}</p>
       </span>
     )
   );

@@ -6,6 +6,9 @@ export const actionTypes = {
   GUESS_WORD: 'GUESS_WORD',
   SET_SECRET_WORD: 'SET_SECRET_WORD',
   RESET_GAME: 'RESET_GAME',
+  GIVE_UP: 'GIVE_UP',
+  TRY_AGAIN: 'TRY_AGAIN',
+  CLEAR_WORD: 'CLEAR_WORD',
 };
 
 export const resetGame = () => {
@@ -13,7 +16,23 @@ export const resetGame = () => {
     dispatch({
       type: actionTypes.RESET_GAME,
     });
+    dispatch({
+      type: actionTypes.TRY_AGAIN,
+    });
+    dispatch({
+      type: actionTypes.CLEAR_WORD,
+    });
+
     return dispatch(getSecretWord());
+  };
+};
+
+export const giveUpGame = () => {
+  return (dispatch) => {
+    console.log('click giveUpGame');
+    dispatch({
+      type: actionTypes.GIVE_UP,
+    });
   };
 };
 

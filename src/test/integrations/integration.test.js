@@ -2,6 +2,7 @@ import { storeFactory } from '../testUtils';
 import { guessWord } from '../../02/actions';
 
 describe('guessWord action dispatcher', () => {
+  const giveUp = false;
   const secretWord = 'party';
   const unsuccessfulGuess = 'train';
 
@@ -15,6 +16,7 @@ describe('guessWord action dispatcher', () => {
       store.dispatch(guessWord(unsuccessfulGuess));
       const newState = store.getState();
       const expectedState = {
+        giveUp,
         secretWord,
         success: false,
         guessedWords: [
@@ -30,6 +32,7 @@ describe('guessWord action dispatcher', () => {
       store.dispatch(guessWord(secretWord));
       const newState = store.getState();
       const expectedState = {
+        giveUp,
         secretWord,
         success: true,
         guessedWords: [
@@ -54,6 +57,7 @@ describe('guessWord action dispatcher', () => {
       store.dispatch(guessWord(unsuccessfulGuess));
       const newState = store.getState();
       const expectedState = {
+        giveUp,
         secretWord,
         success: false,
         guessedWords: [
@@ -67,6 +71,7 @@ describe('guessWord action dispatcher', () => {
       store.dispatch(guessWord(secretWord));
       const newState = store.getState();
       const expectedState = {
+        giveUp,
         secretWord,
         success: true,
         guessedWords: [
