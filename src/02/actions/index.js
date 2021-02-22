@@ -22,14 +22,12 @@ export const resetGame = () => {
     dispatch({
       type: actionTypes.CLEAR_WORD,
     });
-
     return dispatch(getSecretWord());
   };
 };
 
 export const giveUpGame = () => {
   return (dispatch) => {
-    console.log('click giveUpGame');
     dispatch({
       type: actionTypes.GIVE_UP,
     });

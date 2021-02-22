@@ -21,7 +21,7 @@ const GiveUpMessage = (props) => {
 };
 
 GiveUpMessage.propTypes = {
-  giveUp: PropTypes.bool.isRequired,
+  giveUp: PropTypes.bool,
 };
 
 export default GiveUpMessage;

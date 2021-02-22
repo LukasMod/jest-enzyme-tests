@@ -9,7 +9,7 @@ export class UnconnectedInput extends Component {
    */
   constructor(props) {
     super(props);
-    this.state = { currentGuess: '' };
+    this.state = { currentGuess: '', giveUpActive: false };
     this.submitGuessedWord = this.submitGuessedWord.bind(this);
   }
 
@@ -20,6 +20,16 @@ export class UnconnectedInput extends Component {
       this.props.guessWord(guessedWord);
       this.setState({ currentGuess: '' });
     }
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if (state.giveUpActive !== props.giveUp) {
+      return {
+        giveUpActive: props.giveUp,
+        currentGuess: '',
+      };
+    }
+    return null;
   }
 
   render() {
@@ -49,8 +59,8 @@ export class UnconnectedInput extends Component {
   }
 }
 
-const mapStateToProps = ({ success }) => {
-  return { success };
+const mapStateToProps = ({ success, giveUp }) => {
+  return { success, giveUp };
 };
 
 const mapDispatchToProps = (dispatch) => {
