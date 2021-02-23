@@ -14,11 +14,7 @@ export const GiveUpButton = (props) => {
       </button>
     );
 
-  return (
-    <div data-test="component-give-up" className="col">
-      {contents}
-    </div>
-  );
+  return <div data-test="component-give-up">{contents}</div>;
 };
 
 GiveUpButton.propTypes = {

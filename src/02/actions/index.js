@@ -9,6 +9,29 @@ export const actionTypes = {
   GIVE_UP: 'GIVE_UP',
   TRY_AGAIN: 'TRY_AGAIN',
   CLEAR_WORD: 'CLEAR_WORD',
+  USER_ENTERING: 'USER_ENTERING',
+  USER_ENTERED: 'USER_ENTERED',
+  RESET_USER_WORD: 'RESET_USER_WORD',
+};
+
+export const setUserEntering = () => {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.USER_ENTERING,
+    });
+  };
+};
+
+export const setUserSecretWord = (userSecretWorld) => {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.USER_ENTERED,
+    });
+    dispatch({
+      type: actionTypes.SET_SECRET_WORD,
+      payload: userSecretWorld,
+    });
+  };
 };
 
 export const resetGame = () => {
@@ -21,6 +44,9 @@ export const resetGame = () => {
     });
     dispatch({
       type: actionTypes.CLEAR_WORD,
+    });
+    dispatch({
+      type: actionTypes.RESET_USER_WORD,
     });
     return dispatch(getSecretWord());
   };

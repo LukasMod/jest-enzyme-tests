@@ -6,3 +6,5 @@ export { default as TotalGuesses } from './TotalGuesses/TotalGuesses';
 export { default as NewWordButton } from './NewWordButton/NewWordButton';
 export { default as GiveUpButton } from './GiveUpButton/GiveUpButton';
 export { default as GiveUpMessage } from './GiveUpMessage/GiveUpMessage';
+export { default as EnterWordButton } from './EnterWordButton/EnterWordButton';
+export { default as EnterWordForm } from './EnterWordForm/EnterWordForm';

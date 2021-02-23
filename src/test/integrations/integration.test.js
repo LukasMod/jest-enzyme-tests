@@ -3,6 +3,7 @@ import { guessWord } from '../../02/actions';
 
 describe('guessWord action dispatcher', () => {
   const giveUp = false;
+  const userEnter = null;
   const secretWord = 'party';
   const unsuccessfulGuess = 'train';
 
@@ -16,6 +17,7 @@ describe('guessWord action dispatcher', () => {
       store.dispatch(guessWord(unsuccessfulGuess));
       const newState = store.getState();
       const expectedState = {
+        userEnter,
         giveUp,
         secretWord,
         success: false,
@@ -32,6 +34,7 @@ describe('guessWord action dispatcher', () => {
       store.dispatch(guessWord(secretWord));
       const newState = store.getState();
       const expectedState = {
+        userEnter,
         giveUp,
         secretWord,
         success: true,
@@ -57,6 +60,7 @@ describe('guessWord action dispatcher', () => {
       store.dispatch(guessWord(unsuccessfulGuess));
       const newState = store.getState();
       const expectedState = {
+        userEnter,
         giveUp,
         secretWord,
         success: false,
@@ -71,6 +75,7 @@ describe('guessWord action dispatcher', () => {
       store.dispatch(guessWord(secretWord));
       const newState = store.getState();
       const expectedState = {
+        userEnter,
         giveUp,
         secretWord,
         success: true,
