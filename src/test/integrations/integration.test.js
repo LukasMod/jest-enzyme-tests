@@ -4,6 +4,7 @@ import { guessWord } from '../../02/actions';
 describe('guessWord action dispatcher', () => {
   const giveUp = false;
   const userEnter = null;
+  const serverError = false;
   const secretWord = 'party';
   const unsuccessfulGuess = 'train';
 
@@ -19,6 +20,7 @@ describe('guessWord action dispatcher', () => {
       const expectedState = {
         userEnter,
         giveUp,
+        serverError,
         secretWord,
         success: false,
         guessedWords: [
@@ -36,6 +38,7 @@ describe('guessWord action dispatcher', () => {
       const expectedState = {
         userEnter,
         giveUp,
+        serverError,
         secretWord,
         success: true,
         guessedWords: [
@@ -62,6 +65,7 @@ describe('guessWord action dispatcher', () => {
       const expectedState = {
         userEnter,
         giveUp,
+        serverError,
         secretWord,
         success: false,
         guessedWords: [
@@ -77,6 +81,7 @@ describe('guessWord action dispatcher', () => {
       const expectedState = {
         userEnter,
         giveUp,
+        serverError,
         secretWord,
         success: true,
         guessedWords: [

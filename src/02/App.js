@@ -12,6 +12,7 @@ import {
   GiveUpMessage,
   EnterWordButton,
   EnterWordForm,
+  ServerError,
 } from './components';
 import {
   getSecretWord,
@@ -19,6 +20,7 @@ import {
   giveUpGame,
   setUserEntering,
   setUserSecretWord,
+  setServerError,
 } from './actions';
 
 import './App.css';
@@ -35,7 +37,9 @@ export class UnconnectedApp extends Component {
 
   render() {
     let contents;
-    if (this.props.userEnter === 'inProgress') {
+    if (this.props.serverError) {
+      contents = <ServerError setServerError={this.props.setServerError} />;
+    } else if (this.props.userEnter === 'inProgress') {
       contents = (
         <EnterWordForm setUserSecretWord={this.props.setUserSecretWord} />
       );
@@ -71,7 +75,10 @@ export class UnconnectedApp extends Component {
       );
     }
     return (
-      <div data-test="component-app" className="container">
+      <div
+        data-test="component-app"
+        className="container mx-auto"
+        style={{ width: '300px' }}>
         <h1>Jotto The Game</h1>
         {contents}
       </div>
@@ -85,8 +92,9 @@ const mapStateToProps = ({
   guessedWords,
   giveUp,
   userEnter,
+  serverError,
 }) => {
-  return { success, secretWord, guessedWords, giveUp, userEnter };
+  return { success, secretWord, guessedWords, giveUp, userEnter, serverError };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -104,6 +112,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     setUserSecretWord: (userSecretWord) => {
       dispatch(setUserSecretWord(userSecretWord));
+    },
+    setServerError: () => {
+      dispatch(setServerError());
     },
   };
 };

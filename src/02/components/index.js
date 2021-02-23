@@ -8,3 +8,4 @@ export { default as GiveUpButton } from './GiveUpButton/GiveUpButton';
 export { default as GiveUpMessage } from './GiveUpMessage/GiveUpMessage';
 export { default as EnterWordButton } from './EnterWordButton/EnterWordButton';
 export { default as EnterWordForm } from './EnterWordForm/EnterWordForm';
+export { default as ServerError } from './ServerError/ServerError';

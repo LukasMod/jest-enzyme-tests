@@ -38,7 +38,7 @@ export class UnconnectedInput extends Component {
         <form className="form-inline">
           <input
             data-test="input-box"
-            className="mb-2 mx-sm-3"
+            className="mb-2 p-2"
             type="text"
             placeholder="enter guess"
             value={this.state.currentGuess}

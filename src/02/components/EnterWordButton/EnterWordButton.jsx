@@ -19,7 +19,7 @@ export const EnterWordButton = (props) => {
 
 EnterWordButton.propTypes = {
   guessCount: PropTypes.number.isRequired,
-  setUserEntering: PropTypes.func.isRequired,
+  setUserEntering: PropTypes.func,
 };
 
 export default EnterWordButton;

@@ -12,6 +12,16 @@ export const actionTypes = {
   USER_ENTERING: 'USER_ENTERING',
   USER_ENTERED: 'USER_ENTERED',
   RESET_USER_WORD: 'RESET_USER_WORD',
+  SERVER_ERROR: 'SERVER_ERROR',
+  SERVER_ERROR_RESET: 'SERVER_ERROR_RESET',
+};
+
+export const setServerError = () => {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.SERVER_ERROR,
+    });
+  };
 };
 
 export const setUserEntering = () => {
@@ -91,6 +101,7 @@ export const getSecretWord = () => {
           type: actionTypes.SET_SECRET_WORD,
           payload: response.data[0],
         });
-      });
+      })
+      .catch((err) => dispatch(setServerError()));
   };
 };
