@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const EnterWordButton = (props) => {
+const EnterWordButton = (props) => {
   const contents =
     props.guessCount > 0 ? null : (
       <button
@@ -14,11 +14,11 @@ export const EnterWordButton = (props) => {
       </button>
     );
 
-  return <div data-test="component-enter-word-button">{contents}</div>;
+  return <div data-test="component-enter-word">{contents}</div>;
 };
 
 EnterWordButton.propTypes = {
-  guessCount: PropTypes.number.isRequired,
+  guessCount: PropTypes.number,
   setUserEntering: PropTypes.func,
 };
 
