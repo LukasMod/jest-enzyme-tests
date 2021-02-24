@@ -10,7 +10,9 @@ const GiveUpMessage = (props) => {
           className="alert alert-danger">
           <span data-test="give-up-message">
             Don't worry and try again! The secret word was:{' '}
-            <b>{props.secretWord}</b>
+            <b data-test="component-give-up-message-secret-word">
+              {props.secretWord}
+            </b>
           </span>
         </div>
       ) : (
@@ -22,6 +24,7 @@ const GiveUpMessage = (props) => {
 
 GiveUpMessage.propTypes = {
   giveUp: PropTypes.bool,
+  secretWord: PropTypes.string,
 };
 
 export default GiveUpMessage;

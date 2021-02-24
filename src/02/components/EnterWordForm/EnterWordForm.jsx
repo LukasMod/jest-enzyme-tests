@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class EnterWordForm extends Component {
   constructor(props) {
@@ -14,9 +15,9 @@ class EnterWordForm extends Component {
 
   render() {
     return (
-      <form className="form-inline">
+      <form data-test="component-enter-word-form" className="form-inline">
         <input
-          data-test="input-box"
+          data-test="component-enter-word-input"
           className="mb-2 mx-sm-3"
           type="text"
           placeholder="enter secret word"
@@ -26,7 +27,7 @@ class EnterWordForm extends Component {
           }
         />
         <button
-          data-test="submit-button"
+          data-test="component-enter-word-button"
           className="btn btn-primary mb-2"
           type="submit"
           onClick={(event) => this.submitUserSecretWord(event)}>
@@ -36,5 +37,9 @@ class EnterWordForm extends Component {
     );
   }
 }
+
+EnterWordForm.propTypes = {
+  setUserSecretWord: PropTypes.func,
+};
 
 export default EnterWordForm;
