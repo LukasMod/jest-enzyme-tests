@@ -19,6 +19,7 @@ export const GiveUpButton = (props) => {
 
 GiveUpButton.propTypes = {
   success: PropTypes.bool,
+  giveUp: PropTypes.bool,
   giveUpGame: PropTypes.func,
 };
 
