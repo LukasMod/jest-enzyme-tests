@@ -3,6 +3,7 @@ import hookActions from './actions/hookActions';
 import './App.css';
 
 import Input from './Input';
+import LanguagePicker from './LanguagePicker';
 
 /**
  * reducer to update state
