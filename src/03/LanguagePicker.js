@@ -5,7 +5,7 @@ const LanguagePicker = ({ setLanguage }) => {
   const languages = [
     {
       code: 'en',
-      symbol: '🇬🇧',
+      symbol: '🏴',
     },
     {
       code: 'emoji',
@@ -17,8 +17,8 @@ const LanguagePicker = ({ setLanguage }) => {
     <span
       data-test="language-icon"
       key={lang.code}
-      onClick={() => setLanguage()}>
-      {lang.code}
+      onClick={() => setLanguage(lang.code)}>
+      {lang.symbol}
     </span>
   ));
 

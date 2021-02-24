@@ -6,6 +6,7 @@ import languageContext from './context/languageContext';
 
 import Input from './Input';
 import LanguagePicker from './LanguagePicker';
+import Congrats from './Congrats';
 
 /**
  * reducer to update state
@@ -56,8 +57,9 @@ function App() {
       <h1>Jotto</h1>
       <languageContext.Provider value={state.language}>
         <LanguagePicker setLanguage={setLanguage} />
+        <Congrats success={false} />
+        <Input secretWord={state.secretWord[0]} />
       </languageContext.Provider>
-      <Input secretWord={state.secretWord[0]} />
     </div>
   );
 }

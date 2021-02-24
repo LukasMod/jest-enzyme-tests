@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import languageContext from './context/languageContext';
+import stringsModule from './helpers/strings';
+
 const Input = ({ secretWord }) => {
+  const language = React.useContext(languageContext);
   const [currentGuess, setCurrentGuess] = React.useState('');
 
   const handleChange = (event) => {
@@ -27,7 +31,10 @@ const Input = ({ secretWord }) => {
           data-test="input-box"
           className="mb-2 p-2"
           type="text"
-          placeholder="enter guess"
+          placeholder={stringsModule.getStringByLanguage(
+            language,
+            'guessInputPlaceholder'
+          )}
           value={currentGuess}
           onChange={handleChange}
         />
@@ -36,7 +43,7 @@ const Input = ({ secretWord }) => {
           className="btn btn-primary mb-2"
           type="submit"
           onClick={submitGuessedWord}>
-          Submit
+          {stringsModule.getStringByLanguage(language, 'submit')}
         </button>
       </form>
     </div>
