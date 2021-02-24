@@ -38,7 +38,7 @@ export class UnconnectedApp extends Component {
   render() {
     let contents;
     if (this.props.serverError) {
-      contents = <ServerError setServerError={this.props.setServerError} />;
+      contents = <ServerError />;
     } else if (this.props.userEnter === 'inProgress') {
       contents = (
         <EnterWordForm setUserSecretWord={this.props.setUserSecretWord} />
