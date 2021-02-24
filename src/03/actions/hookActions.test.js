@@ -1,6 +1,6 @@
 import moxios from 'moxios';
 
-import { getSecretWord } from './hookActions';
+import actions from './hookActions';
 
 describe('moxios tests', () => {
   beforeEach(() => {
@@ -20,7 +20,7 @@ describe('moxios tests', () => {
     });
     //create mock for callback arg
     const mockSetSecretWord = jest.fn();
-    await getSecretWord(mockSetSecretWord);
+    await actions.getSecretWord(mockSetSecretWord);
 
     expect(mockSetSecretWord).toHaveBeenCalledWith(secretWord);
   });

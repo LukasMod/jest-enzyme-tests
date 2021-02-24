@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getSecretWord = async (setSecretWord) => {
+const getSecretWord = async (setSecretWord) => {
   const response = await axios.get(
     'https://random-word-api.herokuapp.com/word?number=1'
   );
@@ -8,6 +8,5 @@ export const getSecretWord = async (setSecretWord) => {
 };
 
 //default export for mocking convenience
-export default {
-  getSecretWord,
-};
+const actions = { getSecretWord };
+export default actions;
