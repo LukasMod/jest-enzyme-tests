@@ -2,11 +2,14 @@ import React from 'react';
 import hookActions from './actions/hookActions';
 import './App.css';
 
+import guessedWordsContext from './context/guessedWordsContext';
 import languageContext from './context/languageContext';
+import successContext from './context/successContext';
 
 import Input from './Input';
 import LanguagePicker from './LanguagePicker';
 import Congrats from './Congrats';
+import GuessedWords from './GuessedWords';
 
 /**
  * reducer to update state
@@ -57,8 +60,13 @@ function App() {
       <h1>Jotto</h1>
       <languageContext.Provider value={state.language}>
         <LanguagePicker setLanguage={setLanguage} />
-        <Congrats success={false} />
-        <Input secretWord={state.secretWord[0]} />
+        <guessedWordsContext.GuessedWordsProvider>
+          <successContext.SuccessProvider>
+            <Congrats success={false} />
+            <Input secretWord={state.secretWord[0]} />
+          </successContext.SuccessProvider>
+          <GuessedWords />
+        </guessedWordsContext.GuessedWordsProvider>
       </languageContext.Provider>
     </div>
   );
