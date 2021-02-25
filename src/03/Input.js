@@ -1,54 +1,65 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import guessedWordsContext from './context/guessedWordsContext';
+import successContext from './context/successContext';
 import languageContext from './context/languageContext';
 import stringsModule from './helpers/strings';
+import { getLetterMatchCount } from './helpers';
 
-const Input = ({ secretWord }) => {
+function Input({ secretWord }) {
   const language = React.useContext(languageContext);
+  const [success, setSuccess] = successContext.useSuccess();
+  const [guessedWords, setGuessedWords] = guessedWordsContext.useGuessedWords();
   const [currentGuess, setCurrentGuess] = React.useState('');
 
-  const handleChange = (event) => {
-    setCurrentGuess(event.target.value);
-  };
-
-  const submitGuessedWord = (event) => {
-    event.preventDefault();
-    setCurrentGuess('');
-    // TODO: update guessedWords
-    // TODO: check against secretWord and update success
-    // const guessedWord = this.state.currentGuess;
-    // if (guessedWord && guessedWord.length > 0) {
-    //   this.props.guessWord(guessedWord);
-    //   this.setState({ currentGuess: '' });
-    // }
-  };
+  if (success) {
+    return null;
+  }
 
   return (
     <div data-test="component-input">
       <form className="form-inline">
         <input
           data-test="input-box"
-          className="mb-2 p-2"
+          className="mb-2 mx-sm-3"
           type="text"
           placeholder={stringsModule.getStringByLanguage(
             language,
             'guessInputPlaceholder'
           )}
           value={currentGuess}
-          onChange={handleChange}
+          onChange={(event) => setCurrentGuess(event.target.value)}
         />
         <button
           data-test="submit-button"
-          className="btn btn-primary mb-2"
-          type="submit"
-          onClick={submitGuessedWord}>
+          onClick={(evt) => {
+            evt.preventDefault();
+            // update guessedWords
+            const letterMatchCount = getLetterMatchCount(
+              currentGuess,
+              secretWord
+            );
+            const newGuessedWords = [
+              ...guessedWords,
+              { guessedWord: currentGuess, letterMatchCount },
+            ];
+            setGuessedWords(newGuessedWords);
+
+            // check against secretWord and update success if needed
+            if (currentGuess === secretWord) {
+              setSuccess(true);
+            }
+            // clear input box
+            setCurrentGuess('');
+          }}
+          className="btn btn-primary mb-2">
           {stringsModule.getStringByLanguage(language, 'submit')}
         </button>
       </form>
     </div>
   );
-};
+}
 
 Input.propTypes = {
   secretWord: PropTypes.string.isRequired,

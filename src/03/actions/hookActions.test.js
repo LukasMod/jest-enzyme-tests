@@ -22,6 +22,6 @@ describe('moxios tests', () => {
     const mockSetSecretWord = jest.fn();
     await actions.getSecretWord(mockSetSecretWord);
 
-    expect(mockSetSecretWord).toHaveBeenCalledWith(secretWord);
+    expect(mockSetSecretWord).toHaveBeenCalledWith(secretWord[0]);
   });
 });
